@@ -13,10 +13,8 @@ public class ParseApplication extends Application {
 	public void onCreate() {
 		super.onCreate();
 
-		
 		// Add your initialization code here
-		Parse.initialize(this, "C4Tdp39qRWTfACzKVwFzdMG6BQeeQOQgLtPLXKB3",
-				"ltQsE4fiDwwC6BNQfo7GbRWkvHKBF6YcqJwQ0OIg");
+		Parse.initialize(this, "Application Id Here", "Client Key Here");
 
 		ParseInstallation.getCurrentInstallation().saveInBackground();
 

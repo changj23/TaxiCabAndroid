@@ -17,20 +17,20 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class ParseStarterProjectActivity extends Activity {
-	
+
 	TextView loginInfo;
 	TextView signupInfo;
 	Button offerButton;
-	
+
 	/** Called when the activity is first created. */
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-		loginInfo = (TextView)findViewById(R.id.LoginInfo);
-		signupInfo = (TextView)findViewById(R.id.SignupInfo);
-		offerButton = (Button)findViewById(R.id.OfferButton);
-		
+
+		loginInfo = (TextView) findViewById(R.id.LoginInfo);
+		signupInfo = (TextView) findViewById(R.id.SignupInfo);
+		offerButton = (Button) findViewById(R.id.OfferButton);
+
 		// create parseUser object for signup
 		ParseUser user = new ParseUser();
 		user.setUsername("Khedri");
@@ -43,7 +43,7 @@ public class ParseStarterProjectActivity extends Activity {
 		// other fields can be set just like with ParseObject
 		user.put("location", point);
 		user.put("offering", false);
-		
+
 		user.saveInBackground();
 
 		// signup
@@ -56,18 +56,20 @@ public class ParseStarterProjectActivity extends Activity {
 				} else {
 					// Sign up didn't succeed. Look at the ParseException
 					// to figure out what went wrong
-					signupInfo.setText("Signup failed: " + e.getLocalizedMessage());
+					signupInfo.setText("Signup failed: "
+							+ e.getLocalizedMessage());
 					Log.d("signup", "Failed");
 				}
 			}
 		});
-		
+
 		// login
 		ParseUser.logInInBackground("Khedri", "Khedri", new LogInCallback() {
 			public void done(ParseUser user, ParseException e) {
 				if (user != null) {
 					// Hooray! The user is logged in.
-					loginInfo.setText("Successfully logged in as: " + user.getUsername());
+					loginInfo.setText("Successfully logged in as: "
+							+ user.getUsername());
 					user.put("offering", false);
 					user.saveInBackground();
 					Log.d("login", "Success");
@@ -79,20 +81,21 @@ public class ParseStarterProjectActivity extends Activity {
 				}
 			}
 		});
-		
+
 		// offer ride button
-		offerButton.setOnClickListener(new OnClickListener(){
+		offerButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent intent = new Intent(ParseStarterProjectActivity.this, FiltersActivity.class);
+				Intent intent = new Intent(ParseStarterProjectActivity.this,
+						FiltersActivity.class);
 				startActivity(intent);
-				
+
 			}
-			
+
 		});
-		
+
 		ParseAnalytics.trackAppOpened(getIntent());
 	}
 }

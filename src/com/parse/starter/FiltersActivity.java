@@ -9,26 +9,25 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class FiltersActivity extends Activity {
-	
+
 	Button saveFiltersButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.filters);
-		
-		saveFiltersButton = (Button)findViewById(R.id.SaveFiltersButton);
-		saveFiltersButton.setOnClickListener(new OnClickListener(){
+
+		saveFiltersButton = (Button) findViewById(R.id.SaveFiltersButton);
+		saveFiltersButton.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				finish();	
+				finish();
 			}
-			
+
 		});
 	}
-
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
